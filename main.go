@@ -10,7 +10,7 @@ import (
 func main() {
 	ebiten.SetWindowSize(640, 480)
 	ebiten.SetWindowTitle("Go MTG")
-	app := app.NewAppp()
+	app := app.NewApp()
 	if err := ebiten.RunGame(app); err != nil {
 		log.Fatal(err)
 	}

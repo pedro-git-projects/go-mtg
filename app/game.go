@@ -1,6 +1,8 @@
 package app
 
 import (
+	"log"
+
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 	"github.com/pedro-git-projects/go-mtg/game"
@@ -16,11 +18,12 @@ func setupStandardGame() *game.Game {
 	return g
 }
 
-func NewAppp() *App {
-	g := setupStandardGame()
-	return &App{
-		Game: g,
+func NewApp() *App {
+	g, err := game.SetupStandardGameFromTOML("game.toml")
+	if err != nil {
+		log.Fatal(err)
 	}
+	return &App{Game: g}
 }
 
 func (app *App) Update() error {
@@ -28,7 +31,7 @@ func (app *App) Update() error {
 }
 
 func (app *App) Draw(screen *ebiten.Image) {
-	ebitenutil.DebugPrint(screen, app.Game.PlayerStr())
+	ebitenutil.DebugPrint(screen, app.Game.LibraryStr())
 }
 
 func (app *App) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
