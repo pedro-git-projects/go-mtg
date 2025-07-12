@@ -7,7 +7,7 @@ run:
 
 build:
 	@mkdir -p bin
-	go build -o bin/$(BINARY) .
+	go build -o bin/$(BINARY) -v .
 
 clean:
 	go clean
