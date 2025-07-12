@@ -72,3 +72,9 @@ func (mngr *EntityManager) Get(id EntityId) (Entity, bool) {
 	ent, ok := mngr.entities[id.Index]
 	return ent, ok
 }
+
+func (mngr *EntityManager) Entites() map[uint32]Entity {
+	mngr.lock.Lock()
+	defer mngr.lock.Unlock()
+	return mngr.entities
+}
