@@ -1,8 +1,11 @@
-package game
+package system
 
-import "github.com/pedro-git-projects/go-mtg/component"
+import (
+	"github.com/pedro-git-projects/go-mtg/component"
+	"github.com/pedro-git-projects/go-mtg/game"
+)
 
-func (g *Game) DamageSystem(damage int) {
+func DamageSystem(g *game.Game, damage int) {
 	g.Lock.RLock()
 	defer g.Lock.RUnlock()
 

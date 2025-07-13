@@ -28,7 +28,7 @@ type CardConfig struct {
 	ZoneType       component.ZoneComponent           `toml:"zone_type,omitempty"`
 
 	// optional components
-	//	Illustration       *component.IllustrationComponent       `toml:"illustration,omitempty"`
+	Illustration *component.IllustrationComponent `toml:"illustration,omitempty"`
 	// ExpansionSymbol    *component.ExpansionSymbolComponent    `toml:"expansion_symbol,omitempty"`
 	// TextBox            *component.TextBoxComponent            `toml:"text_box,omitempty"`
 	// PowerAndToughness  *component.PowerAndToughnessComponent  `toml:"power_and_toughness,omitempty"`

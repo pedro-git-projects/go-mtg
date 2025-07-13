@@ -8,12 +8,12 @@ import (
 )
 
 func (g *Game) PlayerStr() string {
-	g.lock.RLock()
-	defer g.lock.RUnlock()
+	g.Lock.RLock()
+	defer g.Lock.RUnlock()
 
 	var sb strings.Builder
 	for idx, p := range g.Players {
-		ltComp := g.lifeTotals[p.ID().Index]
+		ltComp := g.LifeTotals[p.ID().Index]
 		sb.WriteString(fmt.Sprintf(
 			"Player %d (Entity%d): %d life\n",
 			idx+1,
@@ -25,8 +25,8 @@ func (g *Game) PlayerStr() string {
 }
 
 func (g *Game) LibraryStr() string {
-	g.lock.RLock()
-	defer g.lock.RUnlock()
+	g.Lock.RLock()
+	defer g.Lock.RUnlock()
 
 	var sb strings.Builder
 	for idx, player := range g.Players {
@@ -37,18 +37,18 @@ func (g *Game) LibraryStr() string {
 		))
 
 		found := false
-		for zoneIdx, zComp := range g.zoneTypes {
+		for zoneIdx, zComp := range g.ZoneTypes {
 			if zComp.Value != component.Library {
 				continue
 			}
-			if g.owners[zoneIdx].Value != player.ID() {
+			if g.Owners[zoneIdx].Value != player.ID() {
 				continue
 			}
 			found = true
 
-			for _, cardID := range g.contains[zoneIdx].Value {
-				name := g.names[cardID.Index].Value
-				cost := g.manaCosts[cardID.Index]
+			for _, cardID := range g.Contains[zoneIdx].Value {
+				name := g.Names[cardID.Index].Value
+				cost := g.ManaCosts[cardID.Index]
 				var parts []string
 				// generic mana (any color)
 				if cost.Generic > 0 {
@@ -123,9 +123,9 @@ func (g *Game) LibraryStr() string {
 				}
 				costStr := strings.Join(parts, "")
 
-				color := g.colorIndicators[cardID.Index].Value.String()
+				color := g.ColorIndicators[cardID.Index].Value.String()
 
-				tl := g.typeLines[cardID.Index]
+				tl := g.TypeLines[cardID.Index]
 				// collect supertypes
 				var superParts []string
 				for s := component.Legendary; s <= component.Ongoing; s++ {

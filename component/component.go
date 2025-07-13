@@ -22,4 +22,5 @@ const (
 	ZoneType
 	Contains
 	Owner
+	Transform
 )
