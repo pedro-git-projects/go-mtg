@@ -125,7 +125,6 @@ func (g *Game) LibraryStr() string {
 
 				color := g.colorIndicators[cardID.Index].Value.String()
 
-				// --- new: type‐line ---
 				tl := g.typeLines[cardID.Index]
 				// collect supertypes
 				var superParts []string
