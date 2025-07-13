@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"sync"
 
+	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/pedro-git-projects/go-mtg/component"
 	"github.com/pedro-git-projects/go-mtg/entity"
 )
@@ -21,6 +22,7 @@ type Game struct {
 	Contains        map[uint32]component.ContainsComponent
 	Illustrations   map[uint32]component.IllustrationComponent
 	Transforms      map[uint32]component.TransformComponent
+	Symbols         map[string]*ebiten.Image
 
 	Players []entity.Entity
 	Lock    sync.RWMutex
