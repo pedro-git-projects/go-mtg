@@ -125,7 +125,46 @@ func (g *Game) LibraryStr() string {
 
 				color := g.colorIndicators[cardID.Index].Value.String()
 
-				sb.WriteString(fmt.Sprintf("  – %s %s [%s]\n", name, costStr, color))
+				// --- new: type‐line ---
+				tl := g.typeLines[cardID.Index]
+				// collect supertypes
+				var superParts []string
+				for s := component.Legendary; s <= component.Ongoing; s++ {
+					if tl.HasSuper(s) {
+						superParts = append(superParts, s.String())
+					}
+				}
+				// collect types
+				var typeParts []string
+				for t := component.Artifact; t <= component.Vanguard; t++ {
+					if tl.HasType(t) {
+						typeParts = append(typeParts, t.String())
+					}
+				}
+				// merge supers+types
+				var lineParts []string
+				lineParts = append(lineParts, superParts...)
+				lineParts = append(lineParts, typeParts...)
+				mainLine := strings.Join(lineParts, " ")
+
+				// collect subtypes
+				var subParts []string
+				for _, st := range tl.Subtypes {
+					subParts = append(subParts, st.String())
+				}
+
+				var typeLineStr string
+				if len(subParts) > 0 {
+					// e.g. "Legendary Creature — Elf Warrior"
+					typeLineStr = fmt.Sprintf("%s — %s", mainLine, strings.Join(subParts, " "))
+				} else {
+					typeLineStr = mainLine
+				}
+
+				sb.WriteString(fmt.Sprintf(
+					"  – %s %s [%s] (%s)\n",
+					name, costStr, color, typeLineStr,
+				))
 			}
 		}
 

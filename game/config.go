@@ -20,9 +20,25 @@ type GameConfig struct {
 }
 
 type CardConfig struct {
+	// required
 	Name           string                            `toml:"name"`
 	ManaCost       component.ManaCostComponent       `toml:"mana_cost"`
 	ColorIndicator component.ColorIndicatorComponent `toml:"color_indicator"`
+	TypeLine       component.TypeLineConfig          `toml:"type_line"`
+	ZoneType       component.ZoneComponent           `toml:"zone_type,omitempty"`
+
+	// optional components
+	//	Illustration       *component.IllustrationComponent       `toml:"illustration,omitempty"`
+	// ExpansionSymbol    *component.ExpansionSymbolComponent    `toml:"expansion_symbol,omitempty"`
+	// TextBox            *component.TextBoxComponent            `toml:"text_box,omitempty"`
+	// PowerAndToughness  *component.PowerAndToughnessComponent  `toml:"power_and_toughness,omitempty"`
+	// Loyalty            *component.LoyaltyComponent            `toml:"loyalty,omitempty"`
+	// Defense            *component.DefenseComponent            `toml:"defense,omitempty"`
+	// HandModifier       *component.HandModifierComponent       `toml:"hand_modifier,omitempty"`
+	// LifeModifier       *component.LifeModifierComponent       `toml:"life_modifier,omitempty"`
+	// IllustrationCredit *component.IllustrationCreditComponent `toml:"illustration_credit,omitempty"`
+	// LegalText          *component.LegalTextComponent          `toml:"legal_text,omitempty"`
+	// CollectorNumber    *component.CollectorNumberComponent    `toml:"collector_number,omitempty"`
 }
 
 func LoadConfig(path string) (*GameConfig, error) {

@@ -4,104 +4,102 @@ initial_life = 20
 [[libraries]]
 player = 1
 
-[[libraries.cards]]
-name = "Force of Negation"
+  [[libraries.cards]]
+  name = "Force of Negation"
+  [libraries.cards.mana_cost]
+  generic = 1
+  blue    = 2
+  [libraries.cards.color_indicator]
+  value = "Blue"
+  [libraries.cards.type_line]
+  types    = ["Instant"]
 
-[libraries.cards.mana_cost]
-generic = 1
-blue = 2
+  [[libraries.cards]]
+  name = "Assassin's Trophy"
+  [libraries.cards.mana_cost]
+  black = 1
+  green = 1
+  [libraries.cards.color_indicator]
+  value = ["Green", "Black"]
+  [libraries.cards.type_line]
+  types = ["Instant"]
 
-[libraries.cards.color_indicator]
-value = "Blue"
+  [[libraries.cards]]
+  name = "Sol Ring"
+  [libraries.cards.mana_cost]
+  generic = 1
+  [libraries.cards.color_indicator]
+  value = "Colorless"
+  [libraries.cards.type_line]
+  types = ["Artifact"]
 
-[[libraries.cards]]
-name = "Assassin's Trophy"
+  [[libraries.cards]]
+  name = "Rhystic Study"
+  [libraries.cards.mana_cost]
+  generic = 2
+  blue    = 1
+  [libraries.cards.color_indicator]
+  value = "Blue"
+  [libraries.cards.type_line]
+  types = ["Enchantment"]
 
-[libraries.cards.mana_cost]
-black = 1
-green = 1
-
-[libraries.cards.color_indicator]
-value = [
-    "Green",
-    "Black",
-]
-
-[[libraries.cards]]
-name = "Sol Ring"
-
-[libraries.cards.mana_cost]
-generic = 1
-
-[libraries.cards.color_indicator]
-value = "Colorless"
-
-[[libraries.cards]]
-name = "Rhystic Study"
-
-[libraries.cards.mana_cost]
-generic = 2
-blue    = 1
-
-[libraries.cards.color_indicator]
-value = "Blue"
-
-[[libraries.cards]]
-name = "Mana Drain"
-
-[libraries.cards.mana_cost]
-blue = 2
-
-[libraries.cards.color_indicator]
-value = "Blue"
+  [[libraries.cards]]
+  name = "Mana Drain"
+  [libraries.cards.mana_cost]
+  blue = 2
+  [libraries.cards.color_indicator]
+  value = "Blue"
+  [libraries.cards.type_line]
+  types = ["Instant"]
 
 [[libraries]]
 player = 2
 
-[[libraries.cards]]
-name = "Lightning Bolt"
+  [[libraries.cards]]
+  name = "Lightning Bolt"
+  [libraries.cards.mana_cost]
+  red = 1
+  [libraries.cards.color_indicator]
+  value = "Red"
+  [libraries.cards.type_line]
+  types = ["Instant"]
 
-[libraries.cards.mana_cost]
-red = 1
+  [[libraries.cards]]
+  name = "Demonic Tutor"
+  [libraries.cards.mana_cost]
+  generic = 1
+  black   = 1
+  [libraries.cards.color_indicator]
+  value = "Green"
+  [libraries.cards.type_line]
+  types = ["Sorcery"]
 
-[libraries.cards.color_indicator]
-value = "Red"
+  [[libraries.cards]]
+  name = "Thoughtseize"
+  [libraries.cards.mana_cost]
+  black = 1
+  [libraries.cards.color_indicator]
+  value = "Black"
+  [libraries.cards.type_line]
+  types = ["Sorcery"]
 
-[[libraries.cards]]
-name = "Demonic Tutor"
+  [[libraries.cards]]
+  name = "Augury Adept"
+  [libraries.cards.mana_cost]
+  generic   = 1
+  hybrid_wu = 2
+  [libraries.cards.color_indicator]
+  value = "Blue+White"
+  [libraries.cards.type_line]
+  types    = ["Creature"]
+  subtypes = ["Merfolk","Wizard"]
 
-[libraries.cards.mana_cost]
-generic = 1
-black   = 1
-
-[libraries.cards.color_indicator]
-value = "Green"
-
-[[libraries.cards]]
-name = "Thoughtseize"
-
-[libraries.cards.mana_cost]
-black = 1
-
-[libraries.cards.color_indicator]
-value = "Black"
-
-[[libraries.cards]]
-name = "Augury Adept"
-
-[libraries.cards.mana_cost]
-generic   = 1
-hybrid_wu = 2 
-
-[libraries.cards.color_indicator]
-value = "Blue+White"
-
-[[libraries.cards]]
-name = "Opt"
-
-[libraries.cards.mana_cost]
-blue = 1
-
-[libraries.cards.color_indicator]
-value = "Blue"
+  [[libraries.cards]]
+  name = "Opt"
+  [libraries.cards.mana_cost]
+  blue = 1
+  [libraries.cards.color_indicator]
+  value = "Blue"
+  [libraries.cards.type_line]
+  types = ["Instant"]
 

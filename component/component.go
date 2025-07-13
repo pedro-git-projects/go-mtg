@@ -9,12 +9,13 @@ const (
 	Illustration
 	ColorIndicator
 	TypeLine
+	ExpansionSymbol
+	TextBox
 	PowerAndToughness
 	Loyalty
 	Defense
 	HandModifier
 	LifeModifier
-	ExpansionSymbol
 	IllustrationCredit
 	LegalText
 	CollectorNumber

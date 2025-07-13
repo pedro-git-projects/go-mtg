@@ -14,6 +14,7 @@ type Game struct {
 	lifeTotals      map[uint32]component.LifeTotalComponent
 	names           map[uint32]component.NameComponent
 	manaCosts       map[uint32]component.ManaCostComponent
+	typeLines       map[uint32]component.TypeLineComponent
 	zoneTypes       map[uint32]component.ZoneComponent
 	owners          map[uint32]component.OwnerComponent
 	colorIndicators map[uint32]component.ColorIndicatorComponent
@@ -29,6 +30,7 @@ func NewGame(capacity int) *Game {
 		lifeTotals:      make(map[uint32]component.LifeTotalComponent),
 		names:           make(map[uint32]component.NameComponent),
 		manaCosts:       make(map[uint32]component.ManaCostComponent),
+		typeLines:       make(map[uint32]component.TypeLineComponent),
 		zoneTypes:       make(map[uint32]component.ZoneComponent),
 		owners:          make(map[uint32]component.OwnerComponent),
 		contains:        make(map[uint32]component.ContainsComponent),
@@ -55,9 +57,11 @@ func (g *Game) SpawnCard(cfg CardConfig) entity.Entity {
 	c.AddComponent(uint(component.Name))
 	c.AddComponent(uint(component.ManaCost))
 	c.AddComponent(uint(component.ColorIndicator))
+	c.AddComponent(uint(component.TypeLine))
 
 	g.names[c.ID().Index] = component.NameComponent{Value: cfg.Name}
 	g.manaCosts[c.ID().Index] = cfg.ManaCost
+	g.typeLines[c.ID().Index] = cfg.TypeLine.ToComponent()
 	g.colorIndicators[c.ID().Index] = cfg.ColorIndicator
 
 	return c
