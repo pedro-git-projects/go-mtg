@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/pedro-git-projects/go-mtg/component"
 	"github.com/pedro-git-projects/go-mtg/entity"
 )
@@ -22,7 +21,6 @@ type Game struct {
 	Contains        map[uint32]component.ContainsComponent
 	Illustrations   map[uint32]component.IllustrationComponent
 	Transforms      map[uint32]component.TransformComponent
-	Symbols         map[string]*ebiten.Image
 
 	Players []entity.Entity
 	Lock    sync.RWMutex
@@ -61,15 +59,20 @@ func (g *Game) SpawnCard(cfg CardConfig) entity.Entity {
 	defer g.Lock.Unlock()
 	c := g.EM.Create()
 	c.AddComponent(uint(component.Name))
-	c.AddComponent(uint(component.ManaCost))
-	c.AddComponent(uint(component.ColorIndicator))
-	c.AddComponent(uint(component.TypeLine))
 
 	g.Names[c.ID().Index] = component.NameComponent{Value: cfg.Name}
-	g.ManaCosts[c.ID().Index] = cfg.ManaCost
-	g.TypeLines[c.ID().Index] = cfg.TypeLine.ToComponent()
-	g.ColorIndicators[c.ID().Index] = cfg.ColorIndicator
-
+	if cfg.ManaCost != nil {
+		c.AddComponent(uint(component.ManaCost))
+		g.ManaCosts[c.ID().Index] = *cfg.ManaCost
+	}
+	if cfg.TypeLine != nil {
+		c.AddComponent(uint(component.TypeLine))
+		g.TypeLines[c.ID().Index] = cfg.TypeLine.ToComponent()
+	}
+	if cfg.ColorIndicator != nil {
+		c.AddComponent(uint(component.ColorIndicator))
+		g.ColorIndicators[c.ID().Index] = *cfg.ColorIndicator
+	}
 	if cfg.Illustration != nil {
 		c.AddComponent(uint(component.Illustration))
 		g.Illustrations[c.ID().Index] = component.IllustrationComponent{

@@ -5,122 +5,22 @@ initial_life = 20
 player = 1
 
   [[libraries.cards]]
-  name = "Force of Negation"
-  [libraries.cards.illustration]
-  asset_key = "force_of_negation.jpg"
-  [libraries.cards.mana_cost]
-  generic = 1
-  blue    = 2
-  [libraries.cards.color_indicator]
-  value = "Blue"
-  [libraries.cards.type_line]
-  types    = ["Instant"]
+  name = "Abattoir Ghoul"
 
   [[libraries.cards]]
-  name = "Assassin's Trophy"
-  [libraries.cards.illustration]
-  asset_key = "force_of_negation.jpg"
-  [libraries.cards.mana_cost]
-  black = 1
-  green = 1
-  [libraries.cards.color_indicator]
-  value = ["Green", "Black"]
-  [libraries.cards.type_line]
-  types = ["Instant"]
+  name = "Forest"
 
   [[libraries.cards]]
-  name = "Sol Ring"
-  [libraries.cards.illustration]
-  asset_key = "force_of_negation.jpg"
-  [libraries.cards.mana_cost]
-  generic = 1
-  [libraries.cards.color_indicator]
-  value = "Colorless"
-  [libraries.cards.type_line]
-  types = ["Artifact"]
-
-  [[libraries.cards]]
-  name = "Rhystic Study"
-  [libraries.cards.illustration]
-  asset_key = "force_of_negation.jpg"
-  [libraries.cards.mana_cost]
-  generic = 2
-  blue    = 1
-  [libraries.cards.color_indicator]
-  value = "Blue"
-  [libraries.cards.type_line]
-  types = ["Enchantment"]
-
-  [[libraries.cards]]
-  name = "Mana Drain"
-  [libraries.cards.illustration]
-  asset_key = "force_of_negation.jpg"
-  [libraries.cards.mana_cost]
-  blue = 2
-  [libraries.cards.color_indicator]
-  value = "Blue"
-  [libraries.cards.type_line]
-  types = ["Instant"]
+  name = "Angelic Overseer"
 
 [[libraries]]
 player = 2
 
   [[libraries.cards]]
-  name = "Lightning Bolt"
-  [libraries.cards.illustration]
-  asset_key = "force_of_negation.jpg"
-  [libraries.cards.mana_cost]
-  red = 1
-  [libraries.cards.color_indicator]
-  value = "Red"
-  [libraries.cards.type_line]
-  types = ["Instant"]
+  name = "Laboratory Maniac"
 
   [[libraries.cards]]
-  name = "Demonic Tutor"
-  [libraries.cards.illustration]
-  asset_key = "force_of_negation.jpg"
-  [libraries.cards.mana_cost]
-  generic = 1
-  black   = 1
-  [libraries.cards.color_indicator]
-  value = "Green"
-  [libraries.cards.type_line]
-  types = ["Sorcery"]
+  name = "Island"
 
   [[libraries.cards]]
-  name = "Thoughtseize"
-  [libraries.cards.illustration]
-  asset_key = "force_of_negation.jpg"
-  [libraries.cards.mana_cost]
-  black = 1
-  [libraries.cards.color_indicator]
-  value = "Black"
-  [libraries.cards.type_line]
-  types = ["Sorcery"]
-
-  [[libraries.cards]]
-  name = "Augury Adept"
-
-  [libraries.cards.illustration]
-  asset_key = "force_of_negation.jpg"
-  [libraries.cards.mana_cost]
-  generic   = 1
-  hybrid_wu = 2
-  [libraries.cards.color_indicator]
-  value = "Blue+White"
-  [libraries.cards.type_line]
-  types    = ["Creature"]
-  subtypes = ["Merfolk","Wizard"]
-
-  [[libraries.cards]]
-  name = "Opt"
-  [libraries.cards.illustration]
-  asset_key = "force_of_negation.jpg"
-  [libraries.cards.mana_cost]
-  blue = 1
-  [libraries.cards.color_indicator]
-  value = "Blue"
-  [libraries.cards.type_line]
-  types = ["Instant"]
-
+  name = "Midnight Haunting"

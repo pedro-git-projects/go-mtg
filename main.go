@@ -10,6 +10,7 @@ import (
 func main() {
 	ebiten.SetWindowSize(800, 600)
 	ebiten.SetWindowTitle("Go MTG")
+	ebiten.SetFullscreen(true)
 	app := app.NewApp()
 	if err := ebiten.RunGame(app); err != nil {
 		log.Fatal(err)

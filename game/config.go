@@ -21,16 +21,18 @@ type GameConfig struct {
 
 type CardConfig struct {
 	// required
-	Name           string                            `toml:"name"`
-	ManaCost       component.ManaCostComponent       `toml:"mana_cost"`
-	ColorIndicator component.ColorIndicatorComponent `toml:"color_indicator"`
-	TypeLine       component.TypeLineConfig          `toml:"type_line"`
-	ZoneType       component.ZoneComponent           `toml:"zone_type,omitempty"`
+	Name     string                  `toml:"name"`
+	ZoneType component.ZoneComponent `toml:"zone_type,omitempty"`
 
 	// optional components
-	Illustration *component.IllustrationComponent `toml:"illustration,omitempty"`
-	// ExpansionSymbol    *component.ExpansionSymbolComponent    `toml:"expansion_symbol,omitempty"`
-	// TextBox            *component.TextBoxComponent            `toml:"text_box,omitempty"`
+	CardData *component.CardDataComponent `toml:"card_data,omitempty"`
+
+	ManaCost       *component.ManaCostComponent       `toml:"mana_cost"`
+	TypeLine       *component.TypeLineConfig          `toml:"type_line"`
+	ColorIndicator *component.ColorIndicatorComponent `toml:"color_indicator"`
+	Illustration   *component.IllustrationComponent   `toml:"illustration,omitempty"`
+
+	// TODO
 	// PowerAndToughness  *component.PowerAndToughnessComponent  `toml:"power_and_toughness,omitempty"`
 	// Loyalty            *component.LoyaltyComponent            `toml:"loyalty,omitempty"`
 	// Defense            *component.DefenseComponent            `toml:"defense,omitempty"`

@@ -14,30 +14,34 @@ import (
 
 func LoadIllustrations(g *game.Game, assetDir string) error {
 	for idx, ill := range g.Illustrations {
-		path := filepath.Join(assetDir, ill.AssetKey)
+		// build path by adding .png
+		filename := ill.AssetKey + ".png"
+		path := filepath.Join(assetDir, filename)
+
 		if _, err := os.Stat(path); err != nil {
-			return fmt.Errorf("illustration %q not found: %w", path, err)
+			return fmt.Errorf("illustration not found %q: %w", path, err)
 		}
-		// peek format
+
 		f, err := os.Open(path)
 		if err != nil {
 			return err
 		}
-		cfg, format, err := image.DecodeConfig(f)
-		_ = cfg
-		f.Close()
-		if err != nil {
+		if _, format, err := image.DecodeConfig(f); err != nil {
+			f.Close()
 			return fmt.Errorf("cannot decode %q: %w", path, err)
+		} else {
+			fmt.Printf("Loading art %q as %s\n", path, format)
 		}
-		fmt.Printf("Loading %q as format %s\n", path, format)
+		f.Close()
 
 		img, _, err := ebitenutil.NewImageFromFile(path)
 		if err != nil {
 			return fmt.Errorf("ebiten load %q: %w", path, err)
 		}
-		comp := ill
-		comp.Image = img
-		g.Illustrations[uint32(idx)] = comp
+
+		tmp := ill
+		tmp.Image = img
+		g.Illustrations[uint32(idx)] = tmp
 	}
 	return nil
 }

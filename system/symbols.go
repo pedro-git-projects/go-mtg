@@ -1,14 +1,5 @@
 package system
 
-import (
-	"fmt"
-	"path/filepath"
-
-	"github.com/hajimehoshi/ebiten/v2"
-	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
-	"github.com/pedro-git-projects/go-mtg/game"
-)
-
 var symbolFiles = map[string]string{
 	// generic numeric
 	"One":   "One.png",
@@ -47,15 +38,15 @@ var symbolFiles = map[string]string{
 	"GR": "RG.png",
 }
 
-func LoadSymbols(g *game.Game, assetDir string) error {
-	g.Symbols = make(map[string]*ebiten.Image, len(symbolFiles))
-	for key, fname := range symbolFiles {
-		path := filepath.Join(assetDir, fname)
-		img, _, err := ebitenutil.NewImageFromFile(path)
-		if err != nil {
-			return fmt.Errorf("loading symbol %q from %q: %w", key, path, err)
-		}
-		g.Symbols[key] = img
-	}
-	return nil
-}
+// func LoadSymbols(g *game.Game, assetDir string) error {
+// 	g.Symbols = make(map[string]*ebiten.Image, len(symbolFiles))
+// 	for key, fname := range symbolFiles {
+// 		path := filepath.Join(assetDir, fname)
+// 		img, _, err := ebitenutil.NewImageFromFile(path)
+// 		if err != nil {
+// 			return fmt.Errorf("loading symbol %q from %q: %w", key, path, err)
+// 		}
+// 		g.Symbols[key] = img
+// 	}
+// 	return nil
+// }

@@ -790,3 +790,71 @@ func (cfg TypeLineConfig) ToComponent() TypeLineComponent {
 	return tl
 }
 
+// ParseTypeLine splits a Scryfall type_line (ie. "Creature — Griffin")
+// into supertypes, types and subtypes.
+func ParseTypeLine(s string) TypeLineConfig {
+	// s is like "Legendary Artifact Creature — Human Wizard"
+	parts := strings.Split(s, "—")
+	left := strings.Fields(strings.TrimSpace(parts[0]))
+	var sups []Supertype
+	var tys []TypeId
+	for _, tok := range left {
+		// try supertype
+		var st Supertype
+		if err := st.UnmarshalText([]byte(tok)); err == nil {
+			sups = append(sups, st)
+			continue
+		}
+		// fall back to TypeId
+		var t TypeId
+		if err := t.UnmarshalText([]byte(tok)); err == nil {
+			tys = append(tys, t)
+			continue
+		}
+	}
+
+	var subs []SubtypeId
+	if len(parts) > 1 {
+		for _, tok := range strings.Fields(strings.TrimSpace(parts[1])) {
+			var st SubtypeId
+			if err := st.UnmarshalText([]byte(tok)); err == nil {
+				subs = append(subs, st)
+			}
+		}
+	}
+
+	return TypeLineConfig{
+		Supertypes: sups,
+		Types:      tys,
+		Subtypes:   subs,
+	}
+}
+
+func (tl TypeLineComponent) String() string {
+	var parts []string
+
+	// supertypes
+	for i := Supertype(0); i < supertypeCount; i++ {
+		if tl.SuperMask&(1<<i) != 0 {
+			parts = append(parts, i.String())
+		}
+	}
+
+	// types
+	for t := Artifact; t < typeCount; t++ {
+		if tl.TypeMask&(1<<t) != 0 {
+			parts = append(parts, t.String())
+		}
+	}
+
+	out := strings.Join(parts, " ")
+	// subtypes
+	if len(tl.Subtypes) > 0 {
+		var subs []string
+		for _, st := range tl.Subtypes {
+			subs = append(subs, st.String())
+		}
+		out += " — " + strings.Join(subs, " ")
+	}
+	return out
+}

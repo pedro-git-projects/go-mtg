@@ -6,19 +6,19 @@ const (
 	LifeTotal ComponentId = iota
 	Name
 	ManaCost
-	Illustration
-	ColorIndicator
+	ConvertedManaCost
 	TypeLine
-	ExpansionSymbol
-	TextBox
-	PowerAndToughness
+	OracleText
+	Power
+	Toughness
 	Loyalty
+	ColorIndicator
+	ProducedMana
+	Illustration
 	Defense
+	CardData
 	HandModifier
 	LifeModifier
-	IllustrationCredit
-	LegalText
-	CollectorNumber
 	ZoneType
 	Contains
 	Owner
